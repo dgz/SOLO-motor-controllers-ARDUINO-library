@@ -896,6 +896,20 @@ bool SOLOMotorControllersCanopenNative::SetPositionControllerKi(float positionCo
 }
 
 /**
+  * @brief  This command resets the position counter to zero to home SOLO
+        .The method refers to the Object Dictionary: 0x3014
+  * @param[out]  error   optional pointer to an integer that specify result of function
+  * @retval bool 0 fail / 1 for success
+  */
+bool SOLOMotorControllersCanopenNative::ResetPositionToZero(int &error)
+{
+  uint8_t informationToSend[4] = {0x00, 0x00, 0x00, 0x01};
+  uint8_t informationToRead[4] = {0x00, 0x00, 0x00, 0x00};
+  error = SOLOMotorControllers::Error::NO_PROCESSED_COMMAND;
+  return _canbus->CANOpenSdoTransmit(Address, true, OBJECT_RESET_POSITION_TO_ZERO, 0x00, informationToSend, informationToRead, error);
+}
+
+/**
   * @brief  This command overwrites the reported errors in Error Register
   *         reported with command code of "0xA1"
         .The method refers to the Object Dictionary: 0x3020

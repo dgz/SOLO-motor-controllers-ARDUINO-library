@@ -119,6 +119,7 @@ public:
   bool SetPositionReference(long positionReference, int &error = lastError);
   bool SetPositionControllerKp(float positionControllerKp, int &error = lastError);
   bool SetPositionControllerKi(float positionControllerKi, int &error = lastError);
+  bool ResetPositionToZero(int &error = lastError);
   bool OverwriteErrorRegister(int &error = lastError);
   bool SetZsftInjectionAmplitude(float zsftInjectionAmplitude, int &error = lastError);
   bool SetZsftPolarityAmplitude(float zsftPolarityAmplitude, int &error = lastError);
